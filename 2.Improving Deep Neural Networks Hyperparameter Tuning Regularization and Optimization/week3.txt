@@ -1,0 +1,42 @@
+course 2 week 3
+
+TUNE process: alpha, beta12, epsilon, #layers, #hiddenlayers, learnig_rate decay, minibatch size
+. alpha is most important
+. second momentum term
+. third: minibatch size 	#hidden units
+. fourth: #layers			#learning_rate decay
+. last: not tune Adam
+
+. set of values?
+.. sample points of hyper1 hyper2 in grid ==> pick the best sample point: only 5 values of each hyperpara
+===> dont use grid
+.. use random instead: also 25 points
+.. coarse to fine: zoom in the region have high score ==> sample on that smaller region ==> more dense
+
+APPRORIATE SCALE TO PICK HYPERPARA: sampling random in an approriate scale
+. #units, #layers: uniformly
+. alpha: 0.0001 ... 1: 
+.. 0.0001 ->10% 0.1 ->90% 1
+.. search on log scale: 0.0001 -> 0.001 -> 0.01 -> 0.1
+. beta: 0.99 .. 0.999 ==> (1-beta): 0.1 ... 0.0001  1e-1 ... 1e-3 = 10^r, r = -3..-1
+.. ? why linear scale is bad, when beta close to 1, the number of avg examples increase pretty much
+
+TIPS & TRICKS to organize hyper search process
+. retest & evaluate hyperpata after several months: make sure not get stale
+. babysit one model: dont have computation to train many models at the same time-> tune everyday: alpha decrease, add momentum, alpha increase ...
+. training many model in parallel: train many models with many hypers
+
+NORMALIZING ACTIVATIONS: HELP HYPER SEARCH EASIER, WIDE RANGE OF HYPER
+. normalize z is more often than a: z_norm -> z_tidle = gammar * z_norm + beta
+=> gammar, beta: learnable para ==> update as update weights
+.. gammar, beta: control the mean annd variance of z // shift the distribution of z_norm
+.. b is remove because z_norm not depend on b
+.. batch_norm: reduce distribution shift (value of z->a) at each layer, the shift caused by the changes in previous layer // reduce dependence of weight on previous layer's weights
+.. each batch: mean and variance different ==> noise ==> later hidden unit can not depend much on one hidden unit ==> slight regularization effect because noise not large if minibatch size not large
+. test time: predict 1 example
+.. mean: calc in each layer [l] using exponentially weighted avg from all batches {t} 
+.. variance: tương tự
+.. z_norm = z-mean / variance==> z_tidle
+
+SOFTMAX layer
+a = e^z / sum(e^z)

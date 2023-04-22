@@ -1,0 +1,36 @@
+course 3: struturing ML - ML strategy ==> choose right direction to improve model
+ORTHOGONALIZATION: each hyperparas affect 1 aspect
+. in train set: improved by bigger NN, Adam ...
+. in dev set: imrpoved by regularization, bigger train set
+. in test set: improved by bigger dev set because do not good in dev sest
+. real world: change dev/test set, cost function
+. NOT USE stop early: affect bigger NN in train, regularization in dev
+
+SINGLE NUM EVALUATION METRIC: quickly tell result of new result of tuning
+. precision, recall, f1
+. avg error costs of all labels
+
+SATISFICING AND OPTIMIZING METRICS
+. F1 score ( + running time ==> add constraint running time (satisficing)
+. N metrics -> 1: optimizing	N-1: satisficing
+
+TRAIN/DEV/TEST DISTRIBUTION + SPLITTING: test set big enough to give high confidence in overal performance
+. some applications dont need test set to give performance: train/dev splits not worry on how well it was ==> unsual, not recommend
+
+CHANGE METRICS ==> TUNE TO ACHIEVE TARGET WITH NEW METTRICS 
+. dev error is low but include pornographic imgs ==> define new error metrics include weights to porn img
+
+CHANGE DEV/TEST SET: when real world not same distribution
+
+WHY COMPARE TO HLP: to make model replicate human
+. get labeled data from human
+. do error analysis
+. better analysis of bias/variance 
+
+AVOIDABLE BIAS: human <-> train error 	bigger model, momentum, adam, rmsprop, NN architecture (RNN,CNN)
+VARIANCE: train <-> test error			more data, regularization, 
+UNDERSTANDING HLP <= 0.5 ~ proxy of Bayes error =0.5 (can not surpass) ==> HLP to estimate bayes error
+
+SURPASSING HLP: many problems
+. online advertising, product recommendation, logistics, loan approvals: structured
+. speech regconition, some image classification ( skins care)

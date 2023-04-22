@@ -1,0 +1,67 @@
+course 2
+
+vanishing/exploding:
+. weight > identity ==> activation increase exponentially ==> derivative also increase exp
+. weight < identity ==> activation decrease exponentially ==> derivate decrease
+
+minibatch:
+. vectorizaton over all examples is fast, but m=5,000,000 is large ==> train slow
+. minibatch: X{1} = x(1)...x(1000) ... X{5000}
+. mini batch size: 
+.. t=1 ==> stochastic: noisy, some point give bad direction, never converge ==> oscillate around minimum
+/ noisy can be reduced by learning_rate but lose speed up from vectorization
+.. t=m ==> batch GD: too long per iteration
+.. practice: 1<t<m ==> fastest learning
+/ the direction is consistent although a little noise
+/ then osicillate minimum ==> use learning_rate decay
+
+. choose t:
+.. m<2000 -> batch GD
+.. typical t=64,128,256,1024 (fit CPU/GPU memory) try and pick the most efficient
+
+exponentially weighted averages
+. the trends/ the local average: v_t = b*v_t-1 + (1-b)*q_t: aprrox avg temp in 1/(1-b) days
+.. b is large 
+==> avg on many days ==> curve is smoother
+==> curve is shifted to right because adapt slower when temp change ==> latency
+. why it is called exponentially weighted avg: khai triển cthức v_t
+. b=0.1 then 1-b=0.9, 1/b=10, (1-b)^1/b = 1/e=0.3 ==> after 10 days, the weight decrease 1/3
+
+. bias correction in exp weight avg: 
+.. start v0 = 0 is very low, v1 = 0.98v0 + 0.01q_1 <<q1 , also v2 << q1,q2
+==> v_t / (1-b^t): scale v_t when t is small
+
+GD with momentum:
+. in situation the contour is elip ==> GD go zigzagging
+==> cannot use larger learning_rate
+==> slow down GD
+. we want small step in vertical, large step in horizontal. the step vertical or horizontal is the direction of dW, db
+.. calc v_dW, v_db then minus to the W and b
+.. v_dW is average so that vertical step is opposite sign
+.. not use bias correction because after 10 iters: no bias
+.. maybe v_dW = b*v_dW + dW ==> no weighted
+.. b= 0.9 by default
+
+RMSProp: root mean squared
+. khi GD đi zigzag => đi dọc nhiều, ví dụ W => dW large => -learning-rate *dW/sqrt(s_dW) : s_dW lớn ==> slow down the update in W: dW/sqrt(s_dW) is smaller
+. s_dW = b_2*s_dW + (1-b_2)dW**2
+. w = w-learning_rate*dW/(sqrt(s_dW)+epsilon), epsilon=1e-8
+. tương tự với b, s_db
+
+Adam optimization:
+. each iter t:
+dW, db 
+==> b_1 =0.9: v_dW, v_db
+==> b_2=0.999: s_dW, s_db 
+==> v_corrected, s_corrected 
+==> -alpha*v_corrected/sqrt(s_corrected)+epsilon=1e-8
+alpha= tune
+
+learning rate decay
+. 1 epoch: 1 pass all data set
+. alpha = 1/(1+decay_rate*epoch_num)*alpha_0
+
+local optimal: 
+. not a problem because high dim will have more saddle point/ plateaus
+. but a plateaus ==> slow the learning beacuse derivative ~0 a long time
+ 
