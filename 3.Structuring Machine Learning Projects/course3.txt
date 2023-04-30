@@ -8,7 +8,7 @@ ORTHOGONALIZATION: each hyperparas affect 1 aspect
 
 SINGLE NUM EVALUATION METRIC: quickly tell result of new result of tuning
 . precision, recall, f1
-. avg error costs of all labels
+. avg error costs of all labels ==> which labels the most error ==> what the problem is
 
 SATISFICING AND OPTIMIZING METRICS
 . F1 score ( + running time ==> add constraint running time (satisficing)
