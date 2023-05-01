@@ -12,7 +12,7 @@
 2. [Build Alpaca/Not Alpaca classifier using pre-train MobileNetv2.](https://github.com/minhbuibhm/deep-learning/tree/main/4.Convolutional%20Neural%20Networks/week2/transfer_learning_mobile_net)
 3. [Implement YOLO (IoU, non-max suppression, handle anchor box) to detect objects.](https://github.com/minhbuibhm/deep-learning/tree/main/4.Convolutional%20Neural%20Networks/week3/car_detection_with_YOLO)
 4. [Build U-net to do Image segmentation.](https://github.com/minhbuibhm/deep-learning/tree/main/4.Convolutional%20Neural%20Networks/week3/unet)
-5. [Build Face recognition system using Siamese network.] (https://github.com/minhbuibhm/deep-learning/tree/main/4.Convolutional%20Neural%20Networks/week4/face_verification_detection)
+5. [Build Face recognition system using Siamese network.](https://github.com/minhbuibhm/deep-learning/tree/main/4.Convolutional%20Neural%20Networks/week4/face_verification_detection)
 6. [Generate art using Neural Transfer Style.](https://github.com/minhbuibhm/deep-learning/tree/main/4.Convolutional%20Neural%20Networks/week4/neural_style_transfer)
 ## Natural language processing.
 - Understanding vector spaces, probabilities models, sequence models (GRU, LSTM, Bidirectional RNN), attention model, transformer network.
