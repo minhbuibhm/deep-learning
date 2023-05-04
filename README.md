@@ -23,6 +23,3 @@
 4. [Generate emoji for a sentence.](https://github.com/minhbuibhm/deep-learning/tree/main/5.SequenceModels/week2/emojify)
 5. [Build Machine translation using Attention model to translate "25th of June, 2009" into "2009-06-25".](https://github.com/minhbuibhm/deep-learning/tree/main/5.SequenceModels/week3/attention_model_translate_YYYY--MM--DD)
 6. [Implement an algorithm for trigger word detection.](https://github.com/minhbuibhm/deep-learning/tree/main/5.SequenceModels/week3/trigger_word_detection)
-7. [Build a chatbot using a Reformer model.](https://github.com/minhbuibhm/deep-learning/tree/main/5.SequenceModels/week4)
-8. [Use T5 and BERT models to perform question-answering.](https://github.com/minhbuibhm/deep-learning/tree/main/5.SequenceModels/week4)
-9. [Build a Transformer model to summarize text.](https://github.com/minhbuibhm/deep-learning/tree/main/5.SequenceModels/week4)
